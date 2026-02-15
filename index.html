@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🌮 タコオジサン</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, system-ui, sans-serif;
+      background: #fafafa;
+    }
+    .wrap {
+      max-width: 800px;
+      margin: auto;
+      padding: 16px;
+    }
+    h1 {
+      margin-bottom: 8px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid #ddd;
+      display: grid;
+      gap: 10px;
+    }
+    input, select, button {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #111;
+      color: white;
+      font-weight: bold;
+      border: none;
+    }
+    .result {
+      margin-top: 16px;
+    }
+    .box {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <h1>🌮 タコオジサン</h1>
+    <p>食材と気分を入れると、おじさんが具材を考えるぞ！</p>
+
+    <div class="card">
+      <label>料理</label>
+      <select id="dish">
+        <option value="tacos">タコス</option>
+        <option value="burrito">ブリトー</option>
+      </select>
+
+      <label>傾向</label>
+      <select id="style">
+        <option>ガッツリ</option>
+        <option selected>ヘルシー</option>
+        <option>スパイシー</option>
+        <option>さっぱり</option>
+      </select>
+
+      <label>食材（カンマ区切り）</label>
+      <input id="ingredients" value="鶏むね, アボカド" />
+
+      <button onclick="run()">おじさんに聞く</button>
+    </div>
+
+    <div id="result" class="result"></div>
+  </main>
+
+  <script>
+    async function run() {
+      document.getElementById("result").innerHTML =
+        "<div class='box'>🧔🏻‍♂️ おじさんが考え中...</div>";
+
+      // 今はテスト用（後でAI接続する）
+      setTimeout(() => {
+        document.getElementById("result").innerHTML = `
+          <div class="box">
+            <h3>🧔🏻‍♂️ おじさんの一言</h3>
+            <p>その食材なら、アボカドとライムを足すと最高だぞ！</p>
+
+            <h3>おすすめ具材</h3>
+            <ul>
+              <li>アボカド</li>
+              <li>サルサソース</li>
+              <li>ライム</li>
+            </ul>
+          </div>
+        `;
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
